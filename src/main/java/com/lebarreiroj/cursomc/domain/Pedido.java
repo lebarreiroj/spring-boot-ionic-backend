@@ -2,6 +2,8 @@ package com.lebarreiroj.cursomc.domain;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -33,6 +35,8 @@ public class Pedido implements Serializable {
 	@JoinColumn(name="endereco_de_entrega_id")
 	private Endereco EnderecoDeEntrega;
 	
+	private Set<ItemPedido> itens = new HashSet<>();
+		
 	public Pedido() {
 		
 	}
@@ -84,6 +88,15 @@ public class Pedido implements Serializable {
 	public void setEnderecoDeEntrega(Endereco enderecoDeEntrega) {
 		EnderecoDeEntrega = enderecoDeEntrega;
 	}
+	
+	public Set<ItemPedido> getItens() {
+		return itens;
+	}
+
+	public void setItens(Set<ItemPedido> itens) {
+		this.itens = itens;
+	}
+
 
 	@Override
 	public int hashCode() {
@@ -109,6 +122,7 @@ public class Pedido implements Serializable {
 			return false;
 		return true;
 	}
+
 
 	
 	
