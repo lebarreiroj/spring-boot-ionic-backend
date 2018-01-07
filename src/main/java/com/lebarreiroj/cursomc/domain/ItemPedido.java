@@ -37,6 +37,24 @@ public class ItemPedido implements Serializable {
 		return (preco - desconto) * quantidade;
 	}
 
+	@JsonIgnore
+	public Pedido getPedido() {
+		return id.getPedido();
+	}
+	
+	public void setPedido(Pedido pedido) {
+		id.setPedido(pedido);
+	}
+	
+	@JsonIgnore
+	public Produto getProduto( ) {
+		return id.getProduto();
+	}
+
+	public void setProduto(Produto produto) {
+		id.setProduto(produto);
+	}
+		
 	public ItemPedidoPK getId() {
 		return id;
 	}
@@ -69,16 +87,6 @@ public class ItemPedido implements Serializable {
 		this.preco = preco;
 	}
 	
-	@JsonIgnore
-	public Pedido getPedido() {
-		return id.getPedido();
-	}
-	
-	@JsonIgnore
-	public Produto getProduto( ) {
-		return id.getProduto();
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
