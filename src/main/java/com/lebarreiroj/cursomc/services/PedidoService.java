@@ -17,10 +17,10 @@ import com.lebarreiroj.cursomc.services.exceptions.ObjectNotFoundException;
 
 @Service
 public class PedidoService {
-
+	
 	@Autowired
 	private PedidoRepository repo;
-
+	
 	@Autowired
 	private BoletoService boletoService;
 	
@@ -36,12 +36,12 @@ public class PedidoService {
 	public Pedido find(Integer id) {
 		Pedido obj = repo.findOne(id);
 		if (obj == null) {
-			throw new ObjectNotFoundException("Objeto não encontrato! id: " + id + ", Tipo: " + Pedido.class.getName());
-			
+			throw new ObjectNotFoundException("Objeto não encontrado! Id: " + id
+					+ ", Tipo: " + Pedido.class.getName());
 		}
 		return obj;
 	}
-	
+
 	public Pedido insert(Pedido obj) {
 		obj.setId(null);
 		obj.setInstante(new Date());
@@ -57,9 +57,7 @@ public class PedidoService {
 			ip.setDesconto(0.0);
 			ip.setPreco(produtoRepository.findOne(ip.getProduto().getId()).getPreco());
 			ip.setPedido(obj);
-					
 		}
-		
 		itemPedidoRepository.save(obj.getItens());
 		return obj;
 	}
